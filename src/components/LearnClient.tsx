@@ -86,6 +86,7 @@ export default function LearnClient({ slug }: { slug?: string }) {
     router.push('/learn', { scroll: false });
   };
 
+  const handleQuizSubmit = () => {
     if (tempQuizAnswer === null) return;
     setQuizAnswer(tempQuizAnswer);
     const selectedLesson = LESSONS.find(l => l.id === selectedLessonId);
