@@ -1,0 +1,50 @@
+version: "2"
+type: frontend
+tech_stack:
+  - Language: TypeScript
+  - Framework: Next.js 15 (App Router)
+  - Styling: Tailwind CSS
+  - Animation: Framer Motion
+  - Tools: html5-qrcode, qrcode
+features:
+  - name: Landing Page
+    description: Futuristic landing page with hero typing animation and feature highlights.
+    files:
+      - src/app/page.tsx
+      - src/components/ParticleBackground.tsx
+    routes:
+      - path: /
+        description: Root landing page
+  - name: Cipher Playground
+    description: Core encoding and decoding interface with algorithm selection and multi-layer support.
+    files:
+      - src/app/playground/page.tsx
+      - src/lib/ciphers.ts
+    routes:
+      - path: /playground
+        description: Main interactive playground
+  - name: Dashboard
+    description: User activity overview and quick-action widgets.
+    files:
+      - src/app/dashboard/page.tsx
+    routes:
+      - path: /dashboard
+        description: User statistics and history
+  - name: Scanner
+    description: Camera and image-based decoding tool.
+    files:
+      - src/app/scanner/page.tsx
+    routes:
+      - path: /scanner
+        description: Live scanner interface
+  - name: Learning Hub
+    description: Educational section with cipher lessons and interactive quizzes.
+    files:
+      - src/app/learn/page.tsx
+    routes:
+      - path: /learn
+        description: Crypto education page
+known_limitations:
+  - issue: Camera scanner placeholder
+    location: src/app/scanner/page.tsx
+    impact: Live camera decoding is not yet fully implemented.

@@ -1,0 +1,378 @@
+[
+  {
+    "id": "TC001",
+    "title": "Encode text with a single cipher in the playground",
+    "description": "This verifies that a user can select one cipher, enter text, and receive transformed output in the playground.",
+    "category": "Cipher Playground",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /playground"
+      },
+      {
+        "type": "action",
+        "description": "Select a cipher algorithm"
+      },
+      {
+        "type": "action",
+        "description": "Fill in sample text to encode"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transformation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify transformed output is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Navigate from landing page to the cipher playground",
+    "description": "This verifies that a visitor can open the landing page and reach the cipher playground to start an encoding or decoding task.",
+    "category": "Landing Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the landing page is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the cipher playground"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cipher playground is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Decode text with a single cipher in the playground",
+    "description": "This verifies that a user can decode text in the playground and see the recovered output.",
+    "category": "Cipher Playground",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /playground"
+      },
+      {
+        "type": "action",
+        "description": "Select a cipher algorithm"
+      },
+      {
+        "type": "action",
+        "description": "Switch to decode mode"
+      },
+      {
+        "type": "action",
+        "description": "Fill in sample ciphertext to decode"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transformation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify decoded output is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "View the landing page with its interactive hero experience",
+    "description": "This verifies that the landing page renders its main promotional content and interactive hero experience on load.",
+    "category": "Landing Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the landing page hero content is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify feature highlights are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Chain multiple ciphers in the playground",
+    "description": "This verifies that a user can apply multiple cipher layers in sequence and see the combined transformed result.",
+    "category": "Cipher Playground",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /playground"
+      },
+      {
+        "type": "action",
+        "description": "Select the first cipher algorithm"
+      },
+      {
+        "type": "action",
+        "description": "Add another cipher layer"
+      },
+      {
+        "type": "action",
+        "description": "Fill in sample text to transform"
+      },
+      {
+        "type": "action",
+        "description": "Submit the transformation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multi-layer transformed output is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Open the scanner interface",
+    "description": "A visitor can open the scanner page and see the scanning interface render successfully.",
+    "category": "Scanner",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /scanner"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the scanner interface is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Keep working from recent history in the dashboard",
+    "description": "This verifies that a returning user can review recent activity and continue a prior cipher workflow from the dashboard.",
+    "category": "Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify recent activity is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Open a recent activity item or quick action"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the continuation view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Decode text from an uploaded image",
+    "description": "A user can provide an image to the scanner and receive decoded text in the interface.",
+    "category": "Scanner",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /scanner"
+      },
+      {
+        "type": "action",
+        "description": "Start an image-based scan"
+      },
+      {
+        "type": "action",
+        "description": "Provide a valid image containing encoded text"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify decoded text is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Complete a cipher lesson quiz",
+    "description": "A learner can open a lesson, answer the quiz, and receive feedback on the result.",
+    "category": "Learning Hub",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /learn"
+      },
+      {
+        "type": "action",
+        "description": "Open a cipher lesson"
+      },
+      {
+        "type": "action",
+        "description": "Answer the quiz questions with valid responses"
+      },
+      {
+        "type": "action",
+        "description": "Submit the quiz"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify quiz feedback is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Review dashboard statistics and quick actions",
+    "description": "This verifies that a user can open the dashboard and see activity statistics and available quick actions.",
+    "category": "Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify dashboard statistics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify quick actions are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Open the learning hub",
+    "description": "A visitor can open the learning hub and see the lesson browsing interface render successfully.",
+    "category": "Learning Hub",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /learn"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the learning hub content is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "See a fallback dashboard when activity data is unavailable",
+    "description": "This verifies that the dashboard presents an empty or fallback state when there is no activity to show.",
+    "category": "Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty or fallback dashboard state is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC013",
+    "title": "See quiz validation guidance after an incomplete submission",
+    "description": "A learner who submits an incomplete or invalid quiz response receives a validation prompt instead of a completed result.",
+    "category": "Learning Hub",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /learn"
+      },
+      {
+        "type": "action",
+        "description": "Open a cipher lesson"
+      },
+      {
+        "type": "action",
+        "description": "Submit the quiz without completing the required response"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a quiz validation prompt is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC014",
+    "title": "Get guidance when no lesson is selected",
+    "description": "A visitor navigating the learning hub without opening a lesson sees an instructional empty or guidance state.",
+    "category": "Learning Hub",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /learn"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a lesson-selection guidance state is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC015",
+    "title": "See a usable landing page when animations are unavailable",
+    "description": "This verifies that the landing page still presents a degraded but usable experience if decorative motion effects are not available.",
+    "category": "Landing Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the landing page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the primary landing content remains usable"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC016",
+    "title": "Attempt live camera decoding",
+    "description": "A user can access the live camera scanning experience and see the current placeholder state for unfinished camera decoding.",
+    "category": "Scanner",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /scanner"
+      },
+      {
+        "type": "action",
+        "description": "Start a live camera scan"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a placeholder or not-yet-implemented state is displayed"
+      }
+    ],
+    "priority": "Low"
+  }
+]
