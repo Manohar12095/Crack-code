@@ -25,7 +25,11 @@ export default function ParticleBackground() {
 
     function init() {
       resize();
-      const count = Math.min(80, Math.floor((canvas!.width * canvas!.height) / 18000));
+      const isMobile = window.innerWidth < 768;
+      const count = isMobile 
+        ? Math.min(30, Math.floor((canvas!.width * canvas!.height) / 25000))
+        : Math.min(80, Math.floor((canvas!.width * canvas!.height) / 18000));
+      
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * canvas!.width,
         y: Math.random() * canvas!.height,

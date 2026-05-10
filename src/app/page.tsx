@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { encode } from '@/lib/ciphers';
+import { useSoundEffects } from '@/lib/useSoundEffects';
 
 const HERO_WORDS = ['Encode', 'Decrypt', 'Protect', 'Transmit', 'Conceal'];
 
@@ -24,6 +25,7 @@ const DEMO_CIPHERS = [
 ];
 
 export default function HomePage() {
+  const { playSound } = useSoundEffects();
   const [wordIdx, setWordIdx] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -144,12 +146,12 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-wrap items-center justify-center gap-4 mb-16"
           >
-            <Link href="/playground">
+            <Link href="/playground" onClick={() => playSound('click')}>
               <button className="glow-btn text-base px-8 py-3.5">
                 ⚡ Start Encoding
               </button>
             </Link>
-            <Link href="/scanner">
+            <Link href="/scanner" onClick={() => playSound('click')}>
               <button className="outline-btn text-base px-8 py-3.5">
                 📷 Try Live Scanner
               </button>
@@ -177,7 +179,7 @@ export default function HomePage() {
               {DEMO_CIPHERS.map(c => (
                 <button
                   key={c.name}
-                  onClick={() => setDemoCipher(c)}
+                  onClick={() => { setDemoCipher(c); playSound('click'); }}
                   className="px-3 py-1 rounded-md text-sm transition-all duration-200"
                   style={{
                     background: demoCipher.name === c.name ? 'var(--accent-primary)' : 'var(--bg-glass)',

@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { encode, CIPHERS, CipherType, getStrength } from '@/lib/ciphers';
+import { useSoundEffects } from '@/lib/useSoundEffects';
 
 interface HistoryItem {
   id: number;
@@ -14,6 +15,7 @@ interface HistoryItem {
 }
 
 export default function DashboardPage() {
+  const { playSound } = useSoundEffects();
   const [quickInput, setQuickInput] = useState('');
   const [quickCipher, setQuickCipher] = useState<CipherType>('base64');
   const [history, setHistory] = useState<HistoryItem[]>([]);
@@ -34,6 +36,7 @@ export default function DashboardPage() {
     };
     setHistory(prev => [item, ...prev].slice(0, 20));
     navigator.clipboard.writeText(quickOutput);
+    playSound('success');
   };
 
   const fadeUp = {

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { encode, decode, CIPHERS } from '@/lib/ciphers';
+import { useSoundEffects } from '@/lib/useSoundEffects';
 
 interface Lesson {
   id: string;
@@ -62,6 +63,7 @@ const CHALLENGES = [
 ];
 
 export default function LearnClient({ slug }: { slug?: string }) {
+  const { playSound } = useSoundEffects();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<'lessons' | 'challenges'>('lessons');
   const [selectedLessonId, setSelectedLessonId] = useState<string | null>(slug || null);
@@ -84,9 +86,14 @@ export default function LearnClient({ slug }: { slug?: string }) {
     router.push('/learn', { scroll: false });
   };
 
-  const handleQuizSubmit = () => {
     if (tempQuizAnswer === null) return;
     setQuizAnswer(tempQuizAnswer);
+    const selectedLesson = LESSONS.find(l => l.id === selectedLessonId);
+    if (selectedLesson?.quiz && tempQuizAnswer === selectedLesson.quiz.answer) {
+      playSound('success');
+    } else {
+      playSound('error');
+    }
   };
 
   const checkChallenge = (id: number) => {

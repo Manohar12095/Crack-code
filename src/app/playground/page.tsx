@@ -3,6 +3,7 @@ import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { encode, decode, CIPHERS, CipherType, CipherInfo, detectCipher, getStrength } from '@/lib/ciphers';
+import { useSoundEffects } from '@/lib/useSoundEffects';
 
 type Mode = 'encode' | 'decode';
 type Category = 'all' | 'classic' | 'modern' | 'creative' | 'advanced';
@@ -10,6 +11,7 @@ type Category = 'all' | 'classic' | 'modern' | 'creative' | 'advanced';
 function PlaygroundPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { playSound } = useSoundEffects();
   
   const [mode, setMode] = useState<Mode>('encode');
   const [input, setInput] = useState('');
@@ -72,8 +74,9 @@ function PlaygroundPage() {
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(output);
     setCopied(true);
+    playSound('success');
     setTimeout(() => setCopied(false), 2000);
-  }, [output]);
+  }, [output, playSound]);
 
   const handleDownload = useCallback(() => {
     const blob = new Blob([output], { type: 'text/plain' });
@@ -88,6 +91,7 @@ function PlaygroundPage() {
   const handleSwap = () => {
     setMode(mode === 'encode' ? 'decode' : 'encode');
     setInput(output);
+    playSound('click');
   };
 
   const addLayer = () => {

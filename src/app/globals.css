@@ -206,6 +206,7 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   line-height: 1.6;
+  padding-top: 64px; /* Space for fixed navbar */
 }
 
 /* ===== SCROLLBAR ===== */
@@ -451,12 +452,45 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  :root {
+    --radius-lg: 16px;
+  }
+}
+
 @media (max-width: 768px) {
+  :root {
+    --radius-lg: 12px;
+  }
   .glass-card {
-    border-radius: var(--radius-md);
+    padding: 1.25rem !important;
   }
   .glow-btn, .outline-btn {
     padding: 10px 20px;
     font-size: 0.8rem;
+    width: 100%; /* Full width buttons on mobile */
+  }
+  h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .max-w-6xl {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .grid {
+    gap: 1rem !important;
+  }
+}
+
+/* Performance optimization */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

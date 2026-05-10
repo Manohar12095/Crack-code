@@ -2,8 +2,10 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { decode, detectCipher, CIPHERS, CipherType } from '@/lib/ciphers';
+import { useSoundEffects } from '@/lib/useSoundEffects';
 
 export default function ScannerPage() {
+  const { playSound } = useSoundEffects();
   const [activeTab, setActiveTab] = useState<'camera' | 'image' | 'text'>('text');
   const [textInput, setTextInput] = useState('');
   const [result, setResult] = useState('');
@@ -15,11 +17,13 @@ export default function ScannerPage() {
   const handleTextScan = useCallback(() => {
     if (!textInput.trim()) return;
     setScanning(true);
+    playSound('scan');
     setTimeout(() => {
       const detected = detectCipher(textInput);
       if (detected) {
         setDetectedType(CIPHERS.find(c => c.id === detected)?.name || detected);
         setResult(decode(textInput, detected));
+        playSound('success');
       } else {
         setDetectedType(null);
         setResult('Could not auto-detect the cipher. Try selecting manually.');

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme, THEMES, ThemeId } from '@/lib/ThemeContext';
+import { useSoundEffects } from '@/lib/useSoundEffects';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home', icon: '🏠' },
@@ -14,6 +15,7 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
+  const { playSound } = useSoundEffects();
   const pathname = usePathname();
   const { theme, setTheme, themeInfo } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -109,7 +111,7 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               {/* Theme Button */}
               <button
-                onClick={() => setThemeOpen(!themeOpen)}
+                onClick={() => { setThemeOpen(!themeOpen); playSound('click'); }}
                 className="relative p-2 rounded-lg transition-all duration-200"
                 style={{
                   background: 'var(--bg-glass)',
@@ -124,7 +126,7 @@ export default function Navbar() {
 
               {/* Mobile Hamburger */}
               <button
-                onClick={() => setMobileOpen(!mobileOpen)}
+                onClick={() => { setMobileOpen(!mobileOpen); playSound('click'); }}
                 className="md:hidden p-2 rounded-lg"
                 style={{
                   background: 'var(--bg-glass)',
@@ -166,7 +168,7 @@ export default function Navbar() {
                 {THEMES.map(t => (
                   <button
                     key={t.id}
-                    onClick={() => { setTheme(t.id as ThemeId); setThemeOpen(false); }}
+                    onClick={() => { setTheme(t.id as ThemeId); setThemeOpen(false); playSound('success'); }}
                     className="flex items-center gap-3 p-2.5 rounded-lg text-left transition-all duration-200 w-full"
                     style={{
                       background: theme === t.id ? 'rgba(0,240,255,0.08)' : 'transparent',
